@@ -86,11 +86,17 @@ public class SIR_model_handler {
         for (int i = 1; i < timeArray.length; i++) {
             timeArray[i] = timeArray[i - 1] + timeStep;
         }
+        arraySetup();
+        dataEntrysetup();
+
+    }
+    private void arraySetup() {
         susceptible = new double[timeArray.length];
         initialSusceptible = (initialtotalPopulation - initialInfected);
         infected = new double[timeArray.length];
         recovered = new double[timeArray.length];
         totalPopulation = new double[timeArray.length];
+        fatality = new double[timeArray.length];
 
         //initialize susceptible population on day 1.
         susceptible[0] = initialSusceptible;
@@ -130,12 +136,8 @@ public class SIR_model_handler {
             fatality[i + 1] = fatality[i] + dDdt;
         }
     }
-    /*public void arraySetup() {
 
-        }
-    }*/
-
-    public void drawingCurve() {
+    private void dataEntrysetup() {
         ArrayList<Entry> susceptibleList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
             susceptibleList.add(new Entry((float) timeArray[i],(float)  susceptible[i]));
@@ -159,4 +161,5 @@ public class SIR_model_handler {
 
     }
 }
+
 
