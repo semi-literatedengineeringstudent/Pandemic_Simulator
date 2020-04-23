@@ -11,92 +11,100 @@ public class SIR_model_handler {
     /**
      * initial population of the modeled group.
      */
-    private double initialtotalPopulation;
+    private float initialtotalPopulation;
     /**
      * average number of people an infected people can infect each day.
      */
-    private double infectionRate;
+    private float infectionContact;
+    /**
+     * ratio of people got infected after contacting an infected people.
+     */
+    private float infectionRatio;
     /**
      * ratio of death among infected.
      */
-    private double deathRatio;
+
+    private float deathRatio;
     /**
      * ratio of recover among infected.
      */
-    private double recoverRatio;
+    private float recoverRatio;
     /**
      * duration of pandemic viewers want to see in days.
      */
-    private int infectionPeriod;
+    private float pandemicPeriod;
     /**
      * array of time as horizontal axis of the graph.
      */
-    private double[] timeArray;
+    private float[] timeArray;
     /**
      * to endure good accuracy, we estimate usinh Euler estimation for every 0.1 days.
      */
-    private final double timeStep = 0.1;
+    private final float timeStep = 10/100;
     /**
      * array storing number of susceptible population that could be infected by infected people.
      */
-    private double[] susceptible;
+    private float[] susceptible;
     /**
      * initial number of susceptible people, which is total population - infected initially.
      */
-    private double initialSusceptible;
+    private float initialSusceptible;
     /**
      * array storing number of infected people at each time step.
      */
-    private double[] infected;
+    private float[] infected;
     /**
      * initial number of infected people.
      */
-    private double initialInfected;
+    private float initialInfected;
     /**
      * array storing number of recovered people that are impervious of the virus.
      */
-    private double[] recovered;
+    private float[] recovered;
     /**
      * initial recovered population which is always 0 as no one is recovered at day 1.
      */
-    private final double initialRecovered = 0;
+    private final float initialRecovered = 0;
     /**
      * an array storing number of total population each day, which changes as people dead.
      */
-    private double[] totalPopulation;
+    private float[] totalPopulation;
 
-    private double[] fatality;
+    private float[] fatality;
 
 
 
-    SIR_model_handler(final double initialtotalPopulationInput,
-                      final double initialInfectedInput,
-                      final double infectionRateInput,
-                      final double deathRatioInput,
-                      final double recoverRatioInput,
-                      final int infectionPeriodInput) {
+    SIR_model_handler(final float initialtotalPopulationInput,
+                      final float initialInfectedInput,
+                      final float infectionContactInput,
+                      final float infectionRatioInput,
+                      final float deathRatioInput,
+                      final float recoverRatioInput,
+                      final float pandemicPeriodInput) {
         initialtotalPopulation = initialtotalPopulationInput;
         initialInfected = initialInfectedInput;
-        infectionRate = infectionRateInput;
+        infectionContact = infectionContactInput;
+        infectionRatio = infectionRatioInput;
         deathRatio = deathRatioInput;
         recoverRatio = recoverRatioInput;
-        infectionPeriod = infectionPeriodInput;
-        timeArray = new double[(int) (infectionPeriod / timeStep)];
-        timeArray[0] = 0;
-        for (int i = 1; i < timeArray.length; i++) {
-            timeArray[i] = timeArray[i - 1] + timeStep;
-        }
+        pandemicPeriod = pandemicPeriodInput;
+
         arraySetup();
         dataEntrysetup();
 
     }
     private void arraySetup() {
-        susceptible = new double[timeArray.length];
+        timeArray = new float[(int) (pandemicPeriod / timeStep)];
+        timeArray[0] = 0;
+        for (int i = 1; i < timeArray.length; i++) {
+            timeArray[i] = timeArray[i - 1] + timeStep;
+        }
+        susceptible = new float[timeArray.length];
         initialSusceptible = (initialtotalPopulation - initialInfected);
-        infected = new double[timeArray.length];
-        recovered = new double[timeArray.length];
-        totalPopulation = new double[timeArray.length];
-        fatality = new double[timeArray.length];
+        infected = new float[timeArray.length];
+        recovered = new float[timeArray.length];
+        totalPopulation = new float[timeArray.length];
+        fatality = new float[timeArray.length];
 
         //initialize susceptible population on day 1.
         susceptible[0] = initialSusceptible;
@@ -113,20 +121,21 @@ public class SIR_model_handler {
             // rate of change of susceptible population per day.
             // number of people having contact with infected people times ratio
             // of susceptible poeple om total population.
-            double dSdt = -infectionRate * infected[i]
+            float dSdt = -infectionContact * infected[i] * infectionRatio
                     * (susceptible[i] / totalPopulation[i]);
             // rate of change of infected people/
             // change of susceptible - number of recovered people - number of death.
-            double dIdt = infectionRate * infected[i] * (susceptible[i] / totalPopulation[i])
+            float dIdt = infectionContact * infected[i] * infectionRatio
+                    * (susceptible[i] / totalPopulation[i])
                     - recoverRatio * infected[i]
                     - deathRatio * infected[i];
             // rate of change of recovered people per day.
             // ratio of recover times number of infected people,
-            double dRdt = recoverRatio * infected[i];
+            float dRdt = recoverRatio * infected[i];
             // rate of change of total population, which is number of death each day.
-            double dPdt = -deathRatio * infected[i];
+            float dPdt = -deathRatio * infected[i];
 
-            double dDdt = deathRatio * infected[i];
+            float dDdt = deathRatio * infected[i];
 
             // euler's estimation. x(t) + dx(t)/dt * dt for next day.
             susceptible[i + 1] = susceptible[i] + dSdt * timeStep;
@@ -158,8 +167,8 @@ public class SIR_model_handler {
         for (int i = 0; i < timeArray.length; i++) {
             totolpopulationList.add(new Entry((float) timeArray[i],(float)  fatality[i]));
         }
-
     }
+
 }
 
 
