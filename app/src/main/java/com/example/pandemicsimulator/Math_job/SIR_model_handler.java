@@ -36,15 +36,15 @@ public class SIR_model_handler {
     /**
      * array of time as horizontal axis of the graph.
      */
-    private float[] timeArray;
+    public float[] timeArray;
     /**
      * to endure good accuracy, we estimate usinh Euler estimation for every 0.1 days.
      */
-    private final float timeStep = 10/100;
+    public final double timeStep = 0.1;
     /**
      * array storing number of susceptible population that could be infected by infected people.
      */
-    private float[] susceptible;
+    public float[] susceptible;
     /**
      * initial number of susceptible people, which is total population - infected initially.
      */
@@ -52,29 +52,41 @@ public class SIR_model_handler {
     /**
      * array storing number of infected people at each time step.
      */
-    private float[] infected;
+    public float[] infected;
     /**
      * initial number of infected people.
      */
-    private float initialInfected;
+    public float initialInfected;
     /**
      * array storing number of recovered people that are impervious of the virus.
      */
-    private float[] recovered;
+    public float[] recovered;
     /**
      * initial recovered population which is always 0 as no one is recovered at day 1.
      */
-    private final float initialRecovered = 0;
+    public final float initialRecovered = 0;
     /**
      * an array storing number of total population each day, which changes as people dead.
      */
-    private float[] totalPopulation;
+    public float[] totalPopulation;
 
-    private float[] fatality;
+    public float[] fatality;
+
+    //public ArrayList<String> timeArrayList;
+
+    //public ArrayList<Entry> susceptibleList;
+
+    //public ArrayList<Entry> infectedList;
+
+    //public ArrayList<Entry> recoveredList;
+
+    //public ArrayList<Entry> totalPopulationList;
+
+    //public ArrayList<Entry> fatelityList;
 
 
 
-    SIR_model_handler(final float initialtotalPopulationInput,
+    public SIR_model_handler(final float initialtotalPopulationInput,
                       final float initialInfectedInput,
                       final float infectionContactInput,
                       final float infectionRatioInput,
@@ -90,14 +102,14 @@ public class SIR_model_handler {
         pandemicPeriod = pandemicPeriodInput;
 
         arraySetup();
-        dataEntrysetup();
+        //dataEntrysetup();
 
     }
     private void arraySetup() {
         timeArray = new float[(int) (pandemicPeriod / timeStep)];
         timeArray[0] = 0;
         for (int i = 1; i < timeArray.length; i++) {
-            timeArray[i] = timeArray[i - 1] + timeStep;
+            timeArray[i] = timeArray[i - 1] + (float) timeStep;
         }
         susceptible = new float[timeArray.length];
         initialSusceptible = (initialtotalPopulation - initialInfected);
@@ -138,36 +150,41 @@ public class SIR_model_handler {
             float dDdt = deathRatio * infected[i];
 
             // euler's estimation. x(t) + dx(t)/dt * dt for next day.
-            susceptible[i + 1] = susceptible[i] + dSdt * timeStep;
-            infected[i + 1] = infected[i] + dIdt * timeStep;
-            recovered[i + 1] = recovered[i] + dRdt * timeStep;
-            totalPopulation[i + 1] = totalPopulation[i] + dPdt;
-            fatality[i + 1] = fatality[i] + dDdt;
+            susceptible[i + 1] = susceptible[i] + dSdt * (float) timeStep;
+            infected[i + 1] = infected[i] + dIdt * (float) timeStep;
+            recovered[i + 1] = recovered[i] + dRdt * (float) timeStep;
+            totalPopulation[i + 1] = totalPopulation[i] + dPdt * (float) timeStep;
+            fatality[i + 1] = fatality[i] + dDdt * (float) timeStep;
         }
     }
 
-    private void dataEntrysetup() {
-        ArrayList<Entry> susceptibleList = new ArrayList<>();
+    /*private void dataEntrysetup() {
+        timeArrayList = new ArrayList<>();
+        for (int i = 0; i < timeArray.length; i++) {
+            timeArrayList.add(String.valueOf(timeArray[i]));
+        }
+
+        susceptibleList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
             susceptibleList.add(new Entry((float) timeArray[i],(float)  susceptible[i]));
         }
-        ArrayList<Entry> infectedList = new ArrayList<>();
+        infectedList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            susceptibleList.add(new Entry((float) timeArray[i],(float)  infected[i]));
+            infectedList.add(new Entry((float) timeArray[i],(float)  infected[i]));
         }
-        ArrayList<Entry> recoveredList = new ArrayList<>();
+        recoveredList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
             recoveredList.add(new Entry((float) timeArray[i],(float)  recovered[i]));
         }
-        ArrayList<Entry> totolpopulationList = new ArrayList<>();
+        totalPopulationList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            totolpopulationList.add(new Entry((float) timeArray[i],(float)  totalPopulation[i]));
+            totalPopulationList.add(new Entry((float) timeArray[i],(float)  totalPopulation[i]));
         }
-        ArrayList<Entry> fatalityList = new ArrayList<>();
+        fatelityList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            totolpopulationList.add(new Entry((float) timeArray[i],(float)  fatality[i]));
+            fatelityList.add(new Entry((float) timeArray[i],(float)  fatality[i]));
         }
-    }
+    }*/
 
 }
 
