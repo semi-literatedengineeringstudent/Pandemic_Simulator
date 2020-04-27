@@ -40,7 +40,7 @@ public class SIR_model_handler {
     /**
      * to endure good accuracy, we estimate usinh Euler estimation for every 0.1 days.
      */
-    public final double timeStep = 0.1;
+    private final double timeStep = 0.02;
     /**
      * array storing number of susceptible population that could be infected by infected people.
      */
@@ -56,7 +56,7 @@ public class SIR_model_handler {
     /**
      * initial number of infected people.
      */
-    public float initialInfected;
+    private float initialInfected;
     /**
      * array storing number of recovered people that are impervious of the virus.
      */
@@ -64,7 +64,7 @@ public class SIR_model_handler {
     /**
      * initial recovered population which is always 0 as no one is recovered at day 1.
      */
-    public final float initialRecovered = 0;
+    private final float initialRecovered = 0;
     /**
      * an array storing number of total population each day, which changes as people dead.
      */
@@ -157,8 +157,27 @@ public class SIR_model_handler {
             fatality[i + 1] = fatality[i] + dDdt * (float) timeStep;
         }
     }
+    /*
+    public float[] getTimeArray() {
+        return timeArray;
+    }
+    public  float[] getSusceptibleArray() {
+        return susceptible;
+    }
+    public float[] getInfectedArray() {
+        return infected;
+    }
+    public float[] getRecoveredArray() {
+        return recovered;
+    }
+    public float[] getTotalPopulationArray() {
+        return totalPopulation;
+    }
+    public float[] getFatalityArray() {
+        return fatality;
+    }
 
-    /*private void dataEntrysetup() {
+    private void dataEntrysetup() {
         timeArrayList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
             timeArrayList.add(String.valueOf(timeArray[i]));

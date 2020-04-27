@@ -45,27 +45,27 @@ public class drawingCurve extends AppCompatActivity {
 
         ArrayList<Entry> susceptibleList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            susceptibleList.add(new Entry((float) timeArray[i],(float)  susceptibleArray[i]));
+            susceptibleList.add(new Entry((float) timeArray[i] * 50,(float)  susceptibleArray[i]));
         }
         ArrayList<Entry> infectedList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            infectedList.add(new Entry((float) timeArray[i],(float)  infectedArray[i]));
+            infectedList.add(new Entry((float) timeArray[i] * 50,(float)  infectedArray[i]));
         }
         ArrayList<Entry> recoveredList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            recoveredList.add(new Entry((float) timeArray[i],(float)  recoveredArray[i]));
+            recoveredList.add(new Entry((float) timeArray[i] * 50,(float)  recoveredArray[i]));
         }
         ArrayList<Entry> totalPopulationList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            totalPopulationList.add(new Entry((float) timeArray[i],(float)  totalPopulationArray[i]));
+            totalPopulationList.add(new Entry((float) timeArray[i] * 50,(float)  totalPopulationArray[i]));
         }
         ArrayList<Entry> fatalityList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            fatalityList.add(new Entry((float) timeArray[i],(float)  fatalityArray[i]));
+            fatalityList.add(new Entry((float) timeArray[i] * 50,(float)  fatalityArray[i]));
         }
 
 
-        ArrayList<ILineDataSet>  SIRdataset= new ArrayList<>();
+        ArrayList<ILineDataSet>  SIRdataset = new ArrayList<>();
 
         LineDataSet susuceptibleDataset = new LineDataSet(susceptibleList, "susceptible");
         susuceptibleDataset.setDrawCircles(false);
