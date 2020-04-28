@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.pandemicsimulator.Math_job.SIR_model_handler;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -18,19 +17,12 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.util.ArrayList;
 
 public class drawingCurve extends AppCompatActivity {
-
-    private LineChart SIRcurve;
-
-    private Button toMainPage;
-
-    private Button replugParameter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing_curve);
 
-        SIRcurve = (LineChart) findViewById(R.id.drawingCurve);
+        LineChart SIRcurve = findViewById(R.id.drawingCurve);
         float[] timeArray =  getIntent().getFloatArrayExtra("timeArray");
         float[] susceptibleArray = getIntent().getFloatArrayExtra("susceptibleArray");
         float[] infectedArray = getIntent().getFloatArrayExtra("infectedArray");
@@ -38,30 +30,25 @@ public class drawingCurve extends AppCompatActivity {
         float[] totalPopulationArray = getIntent().getFloatArrayExtra("totalPopulationArray");
         float[] fatalityArray = getIntent().getFloatArrayExtra("fatalityArray");
 
-        String[] timeStringArray = new String[timeArray.length];
-        for (int i = 0; i < timeArray.length; i++) {
-            timeStringArray[i] = String.valueOf(timeArray[i]);
-        }
-
         ArrayList<Entry> susceptibleList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            susceptibleList.add(new Entry((float) timeArray[i] * 50,(float)  susceptibleArray[i]));
+            susceptibleList.add(new Entry(timeArray[i] * 10,(float)  susceptibleArray[i]));
         }
         ArrayList<Entry> infectedList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            infectedList.add(new Entry((float) timeArray[i] * 50,(float)  infectedArray[i]));
+            infectedList.add(new Entry(timeArray[i] * 10,(float)  infectedArray[i]));
         }
         ArrayList<Entry> recoveredList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            recoveredList.add(new Entry((float) timeArray[i] * 50,(float)  recoveredArray[i]));
+            recoveredList.add(new Entry(timeArray[i] * 10,(float)  recoveredArray[i]));
         }
         ArrayList<Entry> totalPopulationList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            totalPopulationList.add(new Entry((float) timeArray[i] * 50,(float)  totalPopulationArray[i]));
+            totalPopulationList.add(new Entry(timeArray[i] * 10,(float)  totalPopulationArray[i]));
         }
         ArrayList<Entry> fatalityList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            fatalityList.add(new Entry((float) timeArray[i] * 50,(float)  fatalityArray[i]));
+            fatalityList.add(new Entry(timeArray[i] * 10,(float)  fatalityArray[i]));
         }
 
 
@@ -97,7 +84,7 @@ public class drawingCurve extends AppCompatActivity {
         SIRcurve.invalidate();
 
 
-        toMainPage = (Button) findViewById(R.id.backtoMain);
+        Button toMainPage = findViewById(R.id.backtoMain);
         toMainPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -105,7 +92,7 @@ public class drawingCurve extends AppCompatActivity {
             }
         });
 
-        replugParameter = (Button) findViewById(R.id.replugParameter);
+        Button replugParameter = findViewById(R.id.replugParameter);
         replugParameter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

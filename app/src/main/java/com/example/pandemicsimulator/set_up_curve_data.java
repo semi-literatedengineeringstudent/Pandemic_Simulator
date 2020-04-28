@@ -46,13 +46,13 @@ public class set_up_curve_data extends AppCompatActivity {
 
 
 
-        initianPopulationInput = (EditText) findViewById(R.id.initialPopulation);
-        initialInfectedInput = (EditText) findViewById(R.id.initialInfected);
-        infectedContactInput = (EditText) findViewById(R.id.infectionContact);
-        infectionRatioInput = (EditText) findViewById(R.id.infectionRatio);
-        deathRatioInput = (EditText) findViewById(R.id.deathRatio);
-        recoverRatioInput = (EditText) findViewById(R.id.recoverRatio);
-        pandemicDurationInput = (EditText) findViewById(R.id.pandemicDuration);
+        initianPopulationInput = findViewById(R.id.initialPopulation);
+        initialInfectedInput = findViewById(R.id.initialInfected);
+        infectedContactInput = findViewById(R.id.infectionContact);
+        infectionRatioInput = findViewById(R.id.infectionRatio);
+        deathRatioInput = findViewById(R.id.deathRatio);
+        recoverRatioInput = findViewById(R.id.recoverRatio);
+        pandemicDurationInput = findViewById(R.id.pandemicDuration);
 
         /**
         test = findViewById(R.id.tester);
@@ -77,7 +77,7 @@ public class set_up_curve_data extends AppCompatActivity {
         });
          */
 
-        drawCurve = (Button) findViewById(R.id.todrawCurve);
+        drawCurve = findViewById(R.id.todrawCurve);
         drawCurve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -88,7 +88,7 @@ public class set_up_curve_data extends AppCompatActivity {
                 infectionRatio = Float.valueOf(infectionRatioInput.getText().toString());
                 deathRatio= Float.valueOf(deathRatioInput.getText().toString());
                 recoverRatio = Float.valueOf(recoverRatioInput.getText().toString());
-                pandemicDuration = (Float.valueOf(pandemicDurationInput.getText().toString()) / 50);
+                pandemicDuration = (Float.valueOf(pandemicDurationInput.getText().toString()) / 10);
                 showToast(String.valueOf(initianPopulation));
                 showToast(String.valueOf(initialInfected));
                 showToast(String.valueOf(infectedContact));
@@ -112,9 +112,11 @@ public class set_up_curve_data extends AppCompatActivity {
                     condition = false;
                 } else if (pandemicDuration < 1) {
                     condition = false;
+                } else if (deathRatio + recoverRatio != 1) {
+                    condition = false;
                 }
 
-                if (condition == false) {
+                if (!condition) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(set_up_curve_data.this);
                     alert.setCancelable(true);
                     alert.setTitle("One or more inputs are incorrect.");
@@ -147,7 +149,7 @@ public class set_up_curve_data extends AppCompatActivity {
 
             }
         });
-        backtoMain = (Button) findViewById(R.id.backtoMainpage);
+        backtoMain = findViewById(R.id.backtoMainpage);
         backtoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
