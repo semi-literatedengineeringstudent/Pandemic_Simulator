@@ -106,9 +106,9 @@ public class set_up_curve_data extends AppCompatActivity {
                 boolean condition = true;
                 if (initianPopulation < 1) {
                     condition = false;
-                } else if (initialInfected < 1 || initialInfected > initianPopulation) {
+                } else if (initialInfected < 1) {
                     condition = false;
-                } else if (infectedContact < 1 || infectedContact > initianPopulation) {
+                } else if (infectedContact < 1) {
                     condition = false;
                 } else if (infectionRatio > 1 || infectionRatio < 0) {
                     condition = false;
@@ -118,11 +118,9 @@ public class set_up_curve_data extends AppCompatActivity {
                     condition = false;
                 } else if (pandemicDuration < 1) {
                     condition = false;
-                } else if (deathRatio + recoverRatio != 1) {
-                    condition = false;
                 }
 
-                if (!condition) {
+                if (condition == false) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(set_up_curve_data.this);
                     alert.setCancelable(true);
                     alert.setTitle("One or more inputs are incorrect.");
@@ -228,7 +226,80 @@ public class set_up_curve_data extends AppCompatActivity {
             }
         }));
 
-        backtoMain = (Button) findViewById(R.id.backtoMainpage);
+
+
+        /**
+         * button to see input constraints.
+         */
+        seeInputConstraints = findViewById(R.id.seeInputConstraints);
+        seeInputConstraints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toInputConstraints();
+            }
+        });
+
+
+        /**
+         * random button
+         * not finished yet
+         * add code to another activity accessed from the start page
+         */
+        randomValues = findViewById((R.id.todrawCurve));
+        randomValues.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random population = new Random();
+                int randomPopulation = population.nextInt(1000000 - 2) + 2;
+
+                Random infected = new Random();
+                int randomInfected = infected.nextInt(1000000 - 2) + 2;
+
+                Random contact = new Random();
+                int randomContact = contact.nextInt(1000000 - 2) + 2;
+
+                Random duration = new Random();
+                int randomDuration = duration.nextInt(3000 - 2) + 2;
+
+                Random infection = new Random();
+                float randomInfection = infection.nextInt(100 - 1) / 100;
+
+                Random death = new Random();
+                float randomDeath = (death.nextInt(100 - 1) / 100);
+
+                Random recover = new Random();
+                float randomRecover = (recover.nextInt(100 - 1) / 100);
+
+
+                initianPopulation = randomPopulation;
+                initialInfected = randomInfected;
+                infectedContact = randomContact;
+                infectionRatio = randomInfection;
+                deathRatio= randomDeath;
+                recoverRatio = randomRecover;
+                pandemicDuration = randomDuration;
+                showToast(String.valueOf(initianPopulation));
+                showToast(String.valueOf(initialInfected));
+                showToast(String.valueOf(infectedContact));
+                showToast(String.valueOf(infectionRatio));
+                showToast(String.valueOf(deathRatio));
+                showToast(String.valueOf(recoverRatio));
+                showToast(String.valueOf(pandemicDuration));
+
+                toDraw = new SIR_model_handler(initianPopulation, initialInfected, infectedContact,
+                        infectionRatio, deathRatio, recoverRatio, pandemicDuration);
+                Intent curveInfo = new Intent(set_up_curve_data.this, drawingCurve.class);
+                curveInfo.putExtra("timeArray", getTimeArray());
+                curveInfo.putExtra("susceptibleArray", getSusceptibleArray());
+                curveInfo.putExtra("infectedArray", getInfectedArray());
+                curveInfo.putExtra("recoveredArray", getRecoveredArray());
+                curveInfo.putExtra("totalPopulationArray", getTotalPopulationArray());
+                curveInfo.putExtra("fatalityArray", getFatalityArray());
+                startActivity(curveInfo);
+            }
+        }));
+
+        backtoMain = findViewById(R.id.backtoMainpage);
         backtoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -238,11 +309,11 @@ public class set_up_curve_data extends AppCompatActivity {
 
     }
 
-
     private void toInputConstraints() {
         Intent toInputConstraints = new Intent(this, activity_input_constraints.class);
         startActivity(toInputConstraints);
     }
+
     private void showToast(String text) {
         Toast.makeText(set_up_curve_data.this, text, Toast.LENGTH_SHORT).show();
     }

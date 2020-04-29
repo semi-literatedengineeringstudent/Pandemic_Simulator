@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/infectionContact"
-        android:text="Average number of contacts with the infected each day."
+        android:text="Average number of contacts with an infected each day."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -129,7 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/deathRatio"
-        android:text="Ratio of fatalities to survivors each day."
+        android:text="Ratio of fatalities among infected each day."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
