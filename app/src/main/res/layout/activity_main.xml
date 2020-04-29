@@ -22,7 +22,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
         android:text="Let's create your own virus!"
@@ -91,10 +91,19 @@
         android:id="@+id/plugVirusParameter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/textView4"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="click to plug virus parameter" />
+        android:text="create your own virus parameters" />
+
+    <Button
+        android:id="@+id/existingVirus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plugVirusParameter"
+        android:layout_centerHorizontal="true"
+
+        android:text="choose a real situation" />
 
 
 </RelativeLayout>

@@ -44,18 +44,7 @@
         android:layout_height="56dp"
         android:layout_below="@id/constraint3"
         android:layout_marginTop="49dp"
-        android:text="too"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/constraint5"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@id/constraint4"
-        android:layout_marginTop="49dp"
-        android:text="too"
+        android:text="Pandemic Duration must be greater than one day."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp" />
@@ -64,7 +53,7 @@
         android:id="@+id/backtoMainpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/constraint5"
+        android:layout_below="@id/constraint4"
         android:layout_marginTop="49dp"
         android:layout_centerHorizontal="true"
         android:text="Back to main page"

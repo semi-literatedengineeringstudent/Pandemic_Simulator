@@ -100,9 +100,9 @@ public class set_up_curve_data extends AppCompatActivity {
                 boolean condition = true;
                 if (initianPopulation < 1) {
                     condition = false;
-                } else if (initialInfected < 1) {
+                } else if (initialInfected < 1 || initianPopulation < initialInfected) {
                     condition = false;
-                } else if (infectedContact < 1) {
+                } else if (infectedContact < 1 || initianPopulation < infectedContact) {
                     condition = false;
                 } else if (infectionRatio > 1 || infectionRatio < 0) {
                     condition = false;
@@ -111,6 +111,8 @@ public class set_up_curve_data extends AppCompatActivity {
                 } else if (recoverRatio > 1 || recoverRatio < 0) {
                     condition = false;
                 } else if (pandemicDuration < 1) {
+                    condition = false;
+                } else if (deathRatio + recoverRatio != 1) {
                     condition = false;
                 }
 
