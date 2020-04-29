@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_input_constraints">
+
+    <TextView
+        android:id="@+id/constraint1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:text="Initial Infected and Infection Contact must not exceed Initial Population. "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/constraint2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/constraint1"
+        android:layout_marginTop="49dp"
+        android:text="All ratios must be less than one and greater than zero."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/constraint3"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/constraint2"
+        android:layout_marginTop="49dp"
+        android:text="The sum of Death Ratio and Recovery Ratio must equal one."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/constraint4"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/constraint3"
+        android:layout_marginTop="49dp"
+        android:text="too"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/constraint5"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/constraint4"
+        android:layout_marginTop="49dp"
+        android:text="too"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/backtoMainpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/constraint5"
+        android:layout_marginTop="49dp"
+        android:layout_centerHorizontal="true"
+        android:text="Back to main page"
+        android:textAlignment="center" />
+
+</RelativeLayout>

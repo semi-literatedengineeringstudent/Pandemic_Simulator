@@ -194,5 +194,13 @@
         android:layout_below="@id/todrawCurve"
         android:text="Back to main page" />
 
+    <Button
+        android:id="@+id/seeInputConstraints"
+        android:layout_width="wrap_content"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/backtoMainpage"
+        android:text="See Input Constraints" />
 
 </RelativeLayout>
