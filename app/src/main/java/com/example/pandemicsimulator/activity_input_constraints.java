@@ -25,8 +25,6 @@ public class activity_input_constraints extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void goingBacktoMainpage() {
