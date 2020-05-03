@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginBottom="30dp"
-        android:id="@+id/drawingCurve"></com.github.mikephil.charting.charts.LineChart>
+        android:id="@+id/drawingCurve">
+
+
+    </com.github.mikephil.charting.charts.LineChart>
 
     <Button
         android:id="@+id/backtoMain"
@@ -30,5 +33,13 @@
         android:layout_centerHorizontal="true"
         android:text="click to replug parameter" />
 
+    <Button
+        android:id="@+id/chooseRealvirus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/replugParameter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="click to re-select a real virus" />
 
 </RelativeLayout>

@@ -16,45 +16,129 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/virus1"
+    <Button
+    android:id="@+id/Ebola"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/intro"
+    android:layout_marginTop="20dp"
+    android:layout_centerHorizontal="true"
+    android:text="Ebola" />
+
+    <Button
+        android:id="@+id/SARS"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Ebola"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="SARS" />
+    <EditText
+
+        android:id="@+id/initialPopulation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@id/intro"
-        android:layout_marginTop="49dp"
-        android:text="Ebola"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SARS"
+        android:ems="10"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp" />
+        android:hint="Initial Population"
+        android:inputType="numberDecimal" />
+
     <TextView
-        android:id="@+id/virus2"
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@id/virus1"
-        android:layout_marginTop="49dp"
-        android:text="SRS"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/initialPopulation"
+        android:text="Total population on day 0."
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <EditText
+
+        android:id="@+id/initialInfected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:textAlignment="center"
+        android:ems="10"
+        android:hint="Initial Infected"
+        android:inputType="numberDecimal"
+        android:visibility="visible" />
+
     <TextView
-        android:id="@+id/virus3"
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@id/virus2"
-        android:layout_marginTop="49dp"
-        android:text="virus 3"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/initialInfected"
+        android:text="Number of people infected on day 0."
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    <EditText
+        android:id="@+id/infectionContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:ems="10"
+        android:textAlignment="center"
+        android:hint="Infection Contact"
+        android:inputType="numberDecimal"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infectionContact"
+        android:text="Average number of contacts with an infected each day."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <EditText
+        android:id="@+id/pandemicDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_below="@id/textView3"
+        android:ems="10"
+        android:hint="Pandemic Duration (days)"
+        android:inputType="numberDecimal"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pandemicDuration"
+        android:text="Duration of pandemic in days. (time window)"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <Button
+        android:id="@+id/drawCurve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView20"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="click to draw curve" />
 
     <Button
         android:id="@+id/backtoMainpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/virus3"
+        android:layout_below="@+id/drawCurve"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
         android:text="Back to main page"
         android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/toinputConstraint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backtoMainpage"
+        android:layout_centerHorizontal="true"
+
+        android:text="click to see input constraint" />
+
 
 </RelativeLayout>

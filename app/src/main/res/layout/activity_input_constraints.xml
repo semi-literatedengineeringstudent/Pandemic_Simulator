@@ -59,4 +59,13 @@
         android:text="Back to main page"
         android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/backtoSetupcurve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backtoMainpage"
+        android:layout_marginTop="49dp"
+        android:layout_centerHorizontal="true"
+        android:text=" click to set up your curve" />
+
 </RelativeLayout>

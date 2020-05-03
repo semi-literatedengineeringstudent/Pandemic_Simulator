@@ -32,23 +32,23 @@ public class drawingCurve extends AppCompatActivity {
 
         ArrayList<Entry> susceptibleList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            susceptibleList.add(new Entry(timeArray[i] * 10,(float)  susceptibleArray[i]));
+            susceptibleList.add(new Entry(timeArray[i] * 10, susceptibleArray[i]));
         }
         ArrayList<Entry> infectedList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            infectedList.add(new Entry(timeArray[i] * 10,(float)  infectedArray[i]));
+            infectedList.add(new Entry(timeArray[i] * 10, infectedArray[i]));
         }
         ArrayList<Entry> recoveredList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            recoveredList.add(new Entry(timeArray[i] * 10,(float)  recoveredArray[i]));
+            recoveredList.add(new Entry(timeArray[i] * 10, recoveredArray[i]));
         }
         ArrayList<Entry> totalPopulationList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            totalPopulationList.add(new Entry(timeArray[i] * 10,(float)  totalPopulationArray[i]));
+            totalPopulationList.add(new Entry(timeArray[i] * 10, totalPopulationArray[i]));
         }
         ArrayList<Entry> fatalityList = new ArrayList<>();
         for (int i = 0; i < timeArray.length; i++) {
-            fatalityList.add(new Entry(timeArray[i] * 10,(float)  fatalityArray[i]));
+            fatalityList.add(new Entry(timeArray[i] * 10, fatalityArray[i]));
         }
 
 
@@ -99,6 +99,14 @@ public class drawingCurve extends AppCompatActivity {
                 toreplugParameter();
             }
         });
+
+        Button reselectRealVirus = findViewById(R.id.chooseRealvirus);
+        reselectRealVirus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                toReselectRealvirus();
+            }
+        });
     }
 
     private void goingBacktoMainpage() {
@@ -110,7 +118,10 @@ public class drawingCurve extends AppCompatActivity {
         Intent backtoPlug = new Intent(drawingCurve.this, set_up_curve_data.class);
         startActivity(backtoPlug);
     }
-
+    private void toReselectRealvirus() {
+        Intent reselectVirus = new Intent(drawingCurve.this, activity_existing_virus.class);
+        startActivity(reselectVirus);
+    }
 
 
 }

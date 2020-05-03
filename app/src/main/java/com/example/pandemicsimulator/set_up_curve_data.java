@@ -88,7 +88,7 @@ public class set_up_curve_data extends AppCompatActivity {
                 infectionRatio = Float.valueOf(infectionRatioInput.getText().toString());
                 deathRatio= Float.valueOf(deathRatioInput.getText().toString());
                 recoverRatio = Float.valueOf(recoverRatioInput.getText().toString());
-                pandemicDuration = (Float.valueOf(pandemicDurationInput.getText().toString()) / 50);
+                pandemicDuration = (Float.valueOf(pandemicDurationInput.getText().toString()) / 10);
                 showToast(String.valueOf(initianPopulation));
                 showToast(String.valueOf(initialInfected));
                 showToast(String.valueOf(infectedContact));
