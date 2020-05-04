@@ -7,32 +7,44 @@
     tools:context=".activity_existing_virus">
 
     <TextView
-        android:id="@+id/intro"
+    android:id="@+id/intro"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_marginTop="20dp"
+    android:text="Here you can choose between two well known viruses."
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/intro2"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro"
         android:layout_marginTop="20dp"
-        android:text="Here you can choose between three well known past viruses."
+
+        android:text="Click a virus to set its pre-existing parameters and set your own below."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="25sp" />
+        android:textSize="15sp" />
 
     <Button
     android:id="@+id/Ebola"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:layout_below="@+id/intro"
+    android:layout_below="@+id/intro2"
     android:layout_marginTop="20dp"
     android:layout_centerHorizontal="true"
-    android:text="Ebola" />
+    android:text="Set Ebola" />
 
     <Button
         android:id="@+id/SARS"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Ebola"
-        android:layout_marginTop="10dp"
+
         android:layout_centerHorizontal="true"
-        android:text="SARS" />
+        android:text="Set SARS" />
     <EditText
 
         android:id="@+id/initialPopulation"
